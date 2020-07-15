@@ -12,18 +12,38 @@ User.create!(name:  "Examples User",
              password_confirmation: "foobar",
              admin: true)
 
-99.times do |n|
+19.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
+  
   User.create!(name:  name,
                email: email,
                password:              password,
                password_confirmation: password)
-               
-users = User.order(:created_at).take(6)
-50.times do
-  content = Faker::Lorem.sentence(5)
-  users.each { |user| user.posts.create!(content: content) }
-end  
+end 
+
+users = User.order(:created_at).take(15)
+15.times do
+ text = Faker::Lorem.sentence(1)
+ title = Faker::Lorem.sentence(1)
+ name1  = Faker::Book.genre
+ name2 = Faker::Book.genre
+ users.each { |user| user.posts.create!(title: title,
+                                        description: text,
+                                        choice_1: name1,
+                                        choice_2: name2) }
+end
+
+#15.times do |n|
+ #   random = Random.rand(1 .. 2)
+    #n += 1
+  #  Result_Post.create!(user_id: n,
+   #                    post_id: n,
+    #                   choice_id: random)
+#end
+
+Result_Post.create do |u|
+  u.choice_id = 1
+  Result_Post.create!(choice_id: u.choice_id)
 end

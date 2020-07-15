@@ -167,6 +167,7 @@ input {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
   }
+  
   .user {
     margin-top: 5em;
     padding-top: 0;
@@ -197,5 +198,53 @@ span.picture {
   margin-top: 10px;
   input {
     border: 0;
+  }
+}
+
+/* index */
+/* post */
+.form-control_1 {
+    margin-bottom: 0;
+    height: 200px;
+}
+
+.item_1 {
+    margin-bottom: 20px;
+}
+
+.item_2 {
+    margin-bottom: 20px;
+}
+
+.vote {
+    margin-top: 50px;
+}
+
+/* static_pages/home */
+.btn_signup {
+    text-align: center;
+}
+
+/* signup */
+.btn_aa {
+    margin-top: 20px;
+}
+/* users/:id/edit */
+.form-control-a {
+    margin-bottom: 20px;
+}
+
+/* sessions new.html */
+.remember_me {
+    margin-left: 15px;
+}
+
+  .posts-index-item {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
   }
 }

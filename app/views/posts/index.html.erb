@@ -1,0 +1,25 @@
+<% provide(:title, "Index") %>
+<h1>アンケート一覧</h1>
+<table class="table table-bordered border-primary table-hover table-sm posts_table">
+  <thead class="thead-dark">
+    <tr>
+    
+      <th scope="col" style="width: 260px">投稿タイトル</th>
+      <th scope="col" style="width: 100px">投稿者</th>
+      <th scope="col" style="width: 190px">投稿日</th>
+      <th scope="col" style="width: 190px">更新日時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @posts.each do |post| %>
+      <div class="posts-index-item">
+          <td><%= link_to(post.title,"/posts/#{post.id}") %></td>
+          <td><%= post.user.name %></td>
+          <td><%= post.created_at %></td>
+          <td><%= post.updated_at %></td>
+      </div>
+    </tr>
+  </tbody>
+  <% end %> 
+</table>
