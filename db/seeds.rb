@@ -23,27 +23,3 @@ User.create!(name:  "Examples User",
                password_confirmation: password)
 end 
 
-users = User.order(:created_at).take(15)
-15.times do
- text = Faker::Lorem.sentence(1)
- title = Faker::Lorem.sentence(1)
- name1  = Faker::Book.genre
- name2 = Faker::Book.genre
- users.each { |user| user.posts.create!(title: title,
-                                        description: text,
-                                        choice_1: name1,
-                                        choice_2: name2) }
-end
-
-#15.times do |n|
- #   random = Random.rand(1 .. 2)
-    #n += 1
-  #  Result_Post.create!(user_id: n,
-   #                    post_id: n,
-    #                   choice_id: random)
-#end
-
-Result_Post.create do |u|
-  u.choice_id = 1
-  Result_Post.create!(choice_id: u.choice_id)
-end

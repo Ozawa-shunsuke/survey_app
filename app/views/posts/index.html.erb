@@ -1,5 +1,12 @@
 <% provide(:title, "Index") %>
 <h1>アンケート一覧</h1>
+<div class="toukou">
+<%= search_form_for @q do |f| %>
+  <%= f.label :title, "タイトルで検索" %>
+  <%= f.search_field :title_cont %>
+  <%= f.submit "検索" %>
+<% end %>
+</div>
 <table class="table table-bordered border-primary table-hover table-sm posts_table">
   <thead class="thead-dark">
     <tr>
@@ -16,8 +23,8 @@
       <div class="posts-index-item">
           <td><%= link_to(post.title,"/posts/#{post.id}") %></td>
           <td><%= post.user.name %></td>
-          <td><%= post.created_at %></td>
-          <td><%= post.updated_at %></td>
+          <td><%= post.created_at.to_s(:datetime_base) %></td>
+          <td><%= post.updated_at.to_s(:datetime_base) %></td>
       </div>
     </tr>
   </tbody>

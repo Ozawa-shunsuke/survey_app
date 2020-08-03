@@ -17,6 +17,11 @@ body {
   padding-top: 60px;
 }
 
+.static_pages_css {
+  background: image-url('haike.jpg');
+  background-size: cover;
+}
+
 section {
   overflow: auto;
 }
@@ -76,6 +81,14 @@ p {
     text-decoration: none;
   }
 }
+
+header ul {
+  display: inline-flex;
+  float: right;
+  list-style: nones;
+}
+
+
 
 /* footer */
 
@@ -143,12 +156,13 @@ input {
 
 #session_remember_me {
   width: auto;
-  margin-left: 0;
+  //margin-left: 0;
 }
 
 /* Users index */
 
 .users {
+  font-size: 16px;
   list-style: none;
   margin: 0;
   li {
@@ -205,15 +219,15 @@ span.picture {
 /* post */
 .form-control_1 {
     margin-bottom: 0;
-    height: 200px;
+    height: 180px;
 }
 
 .item_1 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .item_2 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .vote {
@@ -246,5 +260,154 @@ span.picture {
     overflow: auto;
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+/*投稿フォーム*/
+.post-font {
+  font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+  font-size: 18px;
+}
+
+/* 投稿済みのメッセージ */
+.warning-message {
+  font-size: 25px;
+  font-weight: 900;
+  color: red;
+  margin-top: 18px;
+}
+
+/* ボタンの演出 */
+
+// Animate the size, outside
+.pulse:hover, 
+.pulse:focus {
+  animation: pulse 1s;
+  animation-duration: 0.9s;
+  animation-iteration-count: 3;
+  box-shadow: 0 0 0 2em rgba(#fff,0);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 var(--hover); }
+}
+.pulse {
+  font-size: 18px;
+  font-weight: 900;
+}
+// Multiple shadows, one on the outside, another on the inside
+.offset {  
+  box-shadow: 
+    0.3em 0.3em 0 0 var(--color),
+    inset 0.3em 0.3em 0 0 var(--color);
+  
+  &:hover,
+  &:focus {
+    box-shadow: 
+      0 0 0 0 var(--hover),
+      inset 6em 3.5em 0 0 var(--hover);
+  }
+}
+
+//=== Set button colors
+// If you wonder why use Sass vars or CSS custom properties...
+  // Make a map with the class names and matching colors
+$colors: (
+  fill: #a972cb,
+  pulse: #28a745, 
+  close: #ff7f82, 
+  raise: #ffa260, 
+  up: #e4cb58, 
+  slide: #8fc866, 
+  offset: #19bc8b
+);
+
+// Sass variables compile to a static string; CSS variables are dynamic and inherited
+  // Loop through the map and set CSS custom properties using Sass variables
+@each $button, $color in $colors {
+  .#{$button} {
+    --color: #{$color};
+    --hover: #{$color};  //--hover: #{adjust-hue($color, 45deg)};水色っぽくなる
+  }
+}
+
+// Now every button will have different colors as set above. We get to use the same structure, only changing the custom properties.
+button {  
+  color: var(--color);
+  transition: 0.25s;
+  
+  &:hover,
+  &:focus { 
+    border-color: var(--hover);
+    color: #28a745;
+  }
+}
+
+//=== Pen styling, ignore
+body {
+  color: black;
+  
+  font: 300 1em 'Fira Sans', sans-serif;
+  
+  // Center everything ever
+  justify-content: center;
+  align-content: center;
+  //align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+}
+
+// Basic button styles
+button {
+  background: none;
+  border: 1.8px solid;
+  font: inherit;
+  line-height: 1;
+  margin: 0.5em;
+  padding: 1em 2em;
+}
+
+h1 { font-weight: 400; }
+
+.check_box {
+  margin-top: 0px;
+  margin-bottom: 35px;
+  position: relative;
+  span {
+    position: absolute;
+    margin-left: 20px;
+  }
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 1px 0 0;
+  margin-top: 1px \9;
+  line-height: normal;
+}
+
+.user-info {
+  font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+  font-size: 15px;
+}
+
+/* アンケート一覧の列ごとの名前  */
+th {
+  font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+  text-align:center;
+  font-size: 15px;
+}
+
+td {
+  font-size: 15px;
+}
+
+.toukou {
+  padding-bottom: 20px;
+  font-size: 18.9px;
+  display: flex;
+  input {
+    width: auto;
   }
 }

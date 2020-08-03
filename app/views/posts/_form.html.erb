@@ -1,5 +1,7 @@
 <%= form_for(@post) do |f| %>
+  <div class="post-font">
   <%= render 'shared/error_messages', object: f.object %>
+  
   <div class="form-group">
     <%= f.label :タイトル %>
     <%= f.text_field :title, class: "form-control" %>
@@ -10,16 +12,22 @@
     <%= f.text_area :description, class: "form-control_1" %>
   </div>
   
-  
+  <div class="form-choice">
   <%= f.fields_for :choice do |choice| %>
     <%= f.label :選択肢１ %>
     <%= choice.text_field :item_1, class: "item_1" %>
   <% end %>
+  </div>
   
+  <div class="form-choice-1">
   <%= f.fields_for :choice do |choice| %>
     <%= f.label :選択肢２ %>
     <%= choice.text_field :item_2, class: "item_2" %>
   <% end %>
+  </div>
   
-  <%= f.submit "投稿", class: "btn btn-success" %>
+  <div class="buttons">
+  <button class="pulse">投稿</button>
+  </div>
+  </div>
 <% end %>

@@ -3,19 +3,21 @@
     <div class="row">
         <div class="col-md-10">
           <h1>アンケートの詳細</h1>
-          <div class="card" style="width: 50rem;">
+          <div class="card" style="width: 95rem;">
             <div class="card-body">
               <h3 class="card-title"><%= @post.title %></h3>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item" style="width: 60rem; word-break: break-all;"><%= @post.description %></li>
+              <li class="list-group-item" style="width: 95rem; word-break: break-all;"><%= @post.description %></li>
             </ul>  
-          </div> 
+          </div>
+          <div class="chart">
           <%= bar_chart @data, colors: ["#4cae4c"] %>
+          </div>
           <% if ResultPost.find_by(post_id: params[:id], user_id: current_user.id) %>
         
             
-            <p> <%= "※投稿済み" %>  </p>
+            <p class="warning-message"> <%= "※投票済み" %>  </p>
           <% else %>
             <%= link_to @choice.first.item, result_posts_path(choice_id: @choice.first.id, post_id: @post.id), class: "btn btn-success", method: :post%>
             <%= link_to @choice.second.item, result_posts_path(choice_id: @choice.second.id, post_id: @post.id), class: "btn btn-success", method: :post%>
